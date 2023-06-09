@@ -1,0 +1,70 @@
+:root {
+  --primary: #000000;
+  --secondary: #ff914d;
+  --tertiary: #f6f4f4;
+  --background: #f3f6fb;
+  --light: #fff;
+  --dark: #323b60;
+  --border-radius: 0.3rem;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Geologica", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light);
+  color: var(--primary);
+}
+
+.flex-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--background);
+  padding: 12px 20px;
+  gap: 50px;
+}
+
+.nav-links {
+  color: var(--secondary);
+}
+img.logo-img {
+  width: 200px;
+}
+nav.menu {
+  gap: 35px;
+}
+
+.post {
+  border: 3px solid var(--secondary);
+}
+
+.post-head {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+.title a {
+  color: var(--light);
+}
+
+.post-desc {
+  padding: 10px;
+}
+
+footer {
+  background-color: var(--background);
+  padding: 20px;
+  text-align: center;
+}
