@@ -12,8 +12,10 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log("success");
       document.location.replace("/dashboard");
     } else {
+      console.log("error");
       alert(response.statusText);
     }
   }

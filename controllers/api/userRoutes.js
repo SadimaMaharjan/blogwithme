@@ -1,12 +1,40 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+router.get("/", async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get("/users/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 router.post("/", async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const { username, password } = req.body;
+    const userData = await User.create({
+      username,
+      password,
+    });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -40,6 +68,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: "You are now logged in!" });
