@@ -1,24 +1,7 @@
-<!-- Loop over each object in the projects array -->
-{{#each posts as |post|}}
-  <div class="row mb-4 post">
-    <div class="col-md-12 post-head">
-      <div class="row">
-        <div class="col-md-8">
-          <h2 class="title">
-            <a href="/posts/{{post.id}}">{{post.title}}</a>
-          </h2>
-        </div>
-        <div class="col-md-4">
-          <div class="created_by">
-            <h5>Posted by
-              {{post.user.username}}
-              on
-              {{format_date post.date_created}}</h5>
-          </div>
-        </div>
-      </div>
 
-    </div>
-    <div class="col-md-12 post-desc"><p>{{post.content}}</p></div>
+
+  {{#each posts as |post|}}
+  <div  class="row mb-4 post">
+  {{> post-details}}
   </div>
-{{/each}}
+  {{/each}}

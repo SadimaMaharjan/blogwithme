@@ -1,11 +1,10 @@
-{{#if userPosts.length}}
+{{#if postData.length}}
 <section>
     <h2>Your Posts</h2>
-    {{#each userPosts as |post|}}
+    {{#each postData as |post|}}
     {{> dashboard-posts }}
     {{/each}}
 </section>
 {{/if}}
 
 <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Post</a></button>
-<script src="./js/add-post.js"></script>
