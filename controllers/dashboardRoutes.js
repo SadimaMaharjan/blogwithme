@@ -9,7 +9,23 @@ router.get("/", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
-      include: [{ model: User, attributes: ["username"] }],
+      include: [
+        { model: User, attributes: ["username"] },
+        {
+          model: Comment,
+          attributes: [
+            "id",
+            "comment_text",
+            "post_id",
+            "user_id",
+            "created_at",
+          ],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+      ],
     });
 
     const postData = posts.map((post) => post.get({ plain: true }));
@@ -19,6 +35,8 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get;
 
 router.get("/new", (req, res) => {
   res.render("new-post");
