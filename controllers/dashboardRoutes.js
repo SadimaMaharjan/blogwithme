@@ -36,7 +36,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-router.get("/edit/:id", withAuth, async (req, res) => {
+router.get("/update/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       attributes: ["id", "title", "content", "created_at"],
@@ -64,7 +64,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    res.render("edit-post", { post, loggedIn: true });
+    res.render("update-post", { post, loggedIn: true });
   } catch (err) {
     res.status(500).json(err);
   }
