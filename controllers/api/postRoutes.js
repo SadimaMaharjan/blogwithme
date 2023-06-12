@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
             "comment_text",
             "post_id",
             "user_id",
-            "created_at",
+            "created_on",
           ],
           include: {
             model: User,
@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id, {
-      attributes: ["id", "title", "content", "created_at"],
+      attributes: ["id", "title", "content"],
       include: [
         { model: User, attributes: ["username"] },
         {
@@ -47,7 +47,7 @@ router.get("/:id", async (req, res) => {
             "comment_text",
             "post_id",
             "user_id",
-            "created_at",
+            "created_on",
           ],
           include: {
             model: User,
@@ -91,7 +91,7 @@ router.put("/:id", withAuth, async (req, res) => {
     const postData = await Post.findOne({
       where: {
         id: id,
-        userId: userId, // Ensure that only the owner of the post can update it
+        user_id: userId, // Ensure that only the owner of the post can update it
       },
     });
     const post = postData.get({ plain: true });
@@ -105,7 +105,7 @@ router.put("/:id", withAuth, async (req, res) => {
     await Post.update(post, { where: { id: req.params.id } });
     res.status(200).json({ message: "Post updated successfully" });
   } catch (error) {
-    //console.log(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -118,7 +118,7 @@ router.delete("/:id", withAuth, async (req, res) => {
     const post = await Post.destroy({
       where: {
         id: id,
-        userId: userId,
+        user_id: userId,
       },
     });
 

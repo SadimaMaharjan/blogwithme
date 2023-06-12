@@ -1,8 +1,8 @@
-{{> post-details}}
+{{> post-details post}}
 {{#if logged_in}}
 <div class="row post">
     <div class="col-md-12 post-head">
-  </div>
+    </div>
   <div class="col-md-12 post-desc">
      <form class="form comment-form">
         <div class="form-group">
@@ -17,7 +17,9 @@
 </div>
  {{/if}}
 
- {{> comments}}
+ {{#if post.comments}}
+ {{> comment post.comments }}
+{{/if}}
 
  {{#if logged_in}}
 <script src="/js/comment.js"></script>

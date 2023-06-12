@@ -46,11 +46,13 @@ nav.menu {
   gap: 35px;
 }
 
-.post {
+.post,
+.card {
   border: 3px solid var(--secondary);
 }
 
-.post-head {
+.post-head,
+.card .card-header {
   background-color: var(--secondary);
   color: var(--light);
 }
@@ -59,7 +61,8 @@ nav.menu {
   color: var(--light);
 }
 
-.post-desc {
+.post-desc,
+.card .card-body {
   padding: 10px;
 }
 

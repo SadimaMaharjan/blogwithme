@@ -1,14 +1,16 @@
-<div class="comments">
-  {{#each post.comments}}
+<div class="comments mt-5">
+  {{#each this}}
     <div class="card">
-      <h3 class="card-header"></h3>
+      <h4 class="card-header"></h4>
       <section class="comment card-body">
-        <div class="text">
+        <p>
           {{comment_text}}
-        </div>
+        </p>
         <div class="meta">
-          -{{user.username}},
-          {{format_date created_at}}
+          <p>
+            -{{user.username}},
+            {{format_date created_on}}
+          </p>
         </div>
       </section>
     </div>

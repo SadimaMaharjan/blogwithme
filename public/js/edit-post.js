@@ -3,13 +3,13 @@ const editFormHandler = async (event) => {
   const title = document.querySelector("#update-title").value.trim();
   const content = document.querySelector("#update-content").value.trim();
 
-  const post_id = window.location.toString().split("/")[
+  const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  const response = await fetch(`/api/posts/${post_id}`, {
+  console.log(id);
+  const response = await fetch(`/api/posts/${id}`, {
     method: "PUT",
     body: JSON.stringify({
-      post_id: post_id,
       title,
       content,
     }),

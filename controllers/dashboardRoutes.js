@@ -18,7 +18,7 @@ router.get("/", withAuth, async (req, res) => {
             "comment_text",
             "post_id",
             "user_id",
-            "created_at",
+            "created_on",
           ],
           include: {
             model: User,
@@ -30,7 +30,7 @@ router.get("/", withAuth, async (req, res) => {
 
     const postData = posts.map((post) => post.get({ plain: true }));
 
-    res.render("dashboard", { postData, loggedIn: true });
+    res.render("dashboard", { postData, logged_in: true });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -39,7 +39,7 @@ router.get("/", withAuth, async (req, res) => {
 router.get("/update/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      attributes: ["id", "title", "content", "created_at"],
+      attributes: ["id", "title", "content", "date_created"],
       include: [
         { model: User, attributes: ["username"] },
         {
@@ -49,7 +49,7 @@ router.get("/update/:id", withAuth, async (req, res) => {
             "comment_text",
             "post_id",
             "user_id",
-            "created_at",
+            "created_on",
           ],
           include: {
             model: User,
@@ -64,7 +64,7 @@ router.get("/update/:id", withAuth, async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    res.render("update-post", { post, loggedIn: true });
+    res.render("update-post", { post, logged_in: true });
   } catch (err) {
     res.status(500).json(err);
   }
