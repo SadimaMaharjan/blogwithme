@@ -78,4 +78,4 @@ node server.js
 ## Deployment
 
 The URL of the deployed application in Heroku is given below:
-[Heroku Project Link]()
+[Heroku Project Link](https://blogwithme.herokuapp.com/)
