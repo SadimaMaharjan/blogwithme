@@ -71,3 +71,13 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+.btn,
+.btn.btn-primary {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+.btn a {
+  color: var(--light);
+}

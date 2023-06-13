@@ -50,7 +50,12 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Mock-Up
 
-The following animation demonstrates the application functionality:
+The following screenshots demonstrate the application functionality:
+
+![Homepage](./public/images/home.png)
+![Create New Post](./public/images/Create-new-post.png)
+![Update/Delete Post](./public/images/Update-Delete.png)
+![Login/Signup](./public/images/Login.png)
 
 ## Technologies used
 
@@ -60,3 +65,17 @@ The following animation demonstrates the application functionality:
 - Express Session
 - MySQL2
 - Sequelize
+
+## Usage
+
+- Clone the repo, navigate to the root folder, run the following commands from the CLI:
+
+```md
+node seeds/seed.js
+node server.js
+```
+
+## Deployment
+
+The URL of the deployed application in Heroku is given below:
+[Heroku Project Link]()
